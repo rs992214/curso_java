@@ -1,0 +1,12 @@
+package figuras;
+
+public class Triangulo extends Figura{
+	double base;
+	double altura;
+	
+	public double calcularArea() {
+		// TODO Auto-generated method stub
+		double area = this.base*this.altura/2;
+		return area;
+	}
+}

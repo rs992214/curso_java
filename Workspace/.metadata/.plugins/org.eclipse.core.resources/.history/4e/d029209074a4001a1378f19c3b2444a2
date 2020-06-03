@@ -1,0 +1,9 @@
+package tarea;
+
+public class Nadador extends Deportista{
+
+	
+	public void mostrarRutina(){
+		System.out.println(this.nombre+" nadó 100 meetros en "+this.tiempo+" segundos.");
+	}
+}

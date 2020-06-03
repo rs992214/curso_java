@@ -1,0 +1,13 @@
+package tarea.ar;
+
+public class Persona {
+	String nombre;
+	String apellido;
+	int edad;
+	
+	public boolean darPresente(){
+		
+		return true;
+	}
+
+}

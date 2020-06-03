@@ -1,0 +1,23 @@
+package tarea.ar;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		Persona ninio = new Persona();
+		Adulto docente = new Docente();
+		
+		ninio.setApellido("Rodriguez");
+		ninio.setNombre("Jazmin");
+		ninio.setEdad(13);
+		
+		docente.setApellido("Rubio");
+		docente.setNombre("Raul");
+		docente.setEdad(41);
+		docente.setSueldo(4500);
+		
+		docente.tomarLista(ninio);
+		docente.cobrarSueldo();
+
+	}
+
+}

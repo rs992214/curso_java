@@ -1,0 +1,40 @@
+package clase04;
+
+import java.util.*;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		Password miPass = new Password();
+		Password miPass2 = new Password(4);
+		
+		miPass.generarPassword();
+		fuerza(miPass);
+		obtener(miPass);
+		
+		miPass2.generarPassword();
+		fuerza(miPass2);
+		miPass2.getPassword().forEach(caracter ->{
+			System.out.print(caracter);
+		});
+		
+		Random ran = new Random();
+		int numero = ran.nextInt(10)+48 + ran.nextInt(2)*(17+ran.nextInt(16) + ran.nextInt(2)*32);
+		char caracter =(char) numero;
+		
+	}
+	
+	public static void obtener(Password contraseña){
+		
+	}
+
+	public static void fuerza(Password contraseña){
+		if(contraseña.esFuerte()){
+			System.out.println("Su contraseña es fuerte.");
+		}
+		else{
+			System.out.println("Su contraseña es debil.");
+		}
+	}
+}

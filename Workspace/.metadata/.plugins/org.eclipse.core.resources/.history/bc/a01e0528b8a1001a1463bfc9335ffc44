@@ -1,0 +1,22 @@
+package cartas.mazo;
+
+import java.util.*;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<String> prueba = new ArrayList<String>();
+		for(int i = 0; i<10; i++){
+			prueba.add("carta" + i);
+		}
+		prueba.add(1,"carta1,5");
+		
+		
+		for(int i = 0; i<10; i++){
+			System.out.println(prueba.get(i));
+		}
+		
+	}
+
+}

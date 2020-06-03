@@ -1,0 +1,9 @@
+package figuras;
+
+public abstract class Figura {
+	float base;
+	float altura;
+	
+	public abstract float calcularArea();
+
+}

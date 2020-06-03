@@ -1,0 +1,16 @@
+package tarea.ar;
+
+public class Adulto extends Persona implements Inter{
+	int sueldo;
+
+	public int getSueldo() {
+		return sueldo;
+	}
+
+	public void setSueldo(int sueldo) {
+		this.sueldo = sueldo;
+	}
+	
+	
+
+}

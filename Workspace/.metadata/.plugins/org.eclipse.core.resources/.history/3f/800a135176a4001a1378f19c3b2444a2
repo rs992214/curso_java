@@ -1,0 +1,6 @@
+package tarea.ar;
+
+public class Adulto extends Persona {
+	
+
+}

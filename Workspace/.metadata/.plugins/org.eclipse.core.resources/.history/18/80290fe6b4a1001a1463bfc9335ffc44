@@ -1,0 +1,16 @@
+package cartas.mazo;
+
+import java.util.*;
+
+public class Mazo {
+	ArrayList<Carta> cartas;
+
+	public Mazo() {
+		super();
+		
+		
+	}
+	
+	
+
+}

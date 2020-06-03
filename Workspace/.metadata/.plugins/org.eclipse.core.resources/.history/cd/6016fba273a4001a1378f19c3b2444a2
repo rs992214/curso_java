@@ -1,0 +1,8 @@
+package tarea;
+
+public class Arquero extends Deportista {
+
+	public void mostrarRutina(){
+		
+	}
+}

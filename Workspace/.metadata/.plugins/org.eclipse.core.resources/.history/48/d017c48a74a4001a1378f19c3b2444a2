@@ -1,0 +1,9 @@
+package tarea;
+
+public class Nadador extends Deportista{
+
+	
+	public void mostrarRutina(){
+		
+	}
+}

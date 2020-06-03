@@ -1,0 +1,11 @@
+package figuras;
+
+public class Circulo extends Figura {
+	double radio;
+	
+	public double calcularArea() {
+		// TODO Auto-generated method stub
+		this.area = this.radio*this.radio*3.14;
+		return this.area;
+	}	
+}

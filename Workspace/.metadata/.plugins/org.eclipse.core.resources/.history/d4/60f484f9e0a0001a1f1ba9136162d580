@@ -1,0 +1,18 @@
+package clase04;
+
+public class Password {
+	int longitud;
+	String password;
+	public Password(int longitud) {
+		super();
+		if(longitud >= 6){
+			this.longitud = longitud;
+		}
+		else{
+			this.longitud = 6;
+		}
+	}
+	
+	
+
+}

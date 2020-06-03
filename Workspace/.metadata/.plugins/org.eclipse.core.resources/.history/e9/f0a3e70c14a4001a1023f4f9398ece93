@@ -1,0 +1,12 @@
+package figuras;
+
+public class Rectangulo extends Figura {
+
+	@Override
+	public float calcularArea() {
+		// TODO Auto-generated method stub
+		float area = this.base*this.altura;
+		return area;
+	}
+
+}
