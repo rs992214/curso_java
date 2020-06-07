@@ -1,0 +1,10 @@
+package com.estados.aplicacion.controllers;
+
+public class Persona {
+	String nombre;
+	String apellido;
+	String mail;
+	String usuario;
+	
+
+}

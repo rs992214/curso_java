@@ -1,0 +1,25 @@
+package com.estados.aplicacion.controllers;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+
+@RestController
+public class PersonaController {
+	
+	@GetMapping("/persona")
+	public String hello(@RequestParam(value = "name", defaultValue = "persona")String name){
+		return String.format("Hello %s!", name);
+	}
+	
+	@GetMapping("/persona2")
+	public String listarPersonas(){
+		return String.format("aca irian todas las personas");
+	}
+}
+/*
+ * GET persona/ 	listarPersonas
+ * GET persona/12 	enviarPersona(id)
+ * 
+ */
+

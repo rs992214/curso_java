@@ -1,0 +1,10 @@
+package com.estados.aplicacion.controllers;
+
+public class Posteo {
+	Persona persona;
+	String estado;
+	String mensaje;
+	
+	
+
+}

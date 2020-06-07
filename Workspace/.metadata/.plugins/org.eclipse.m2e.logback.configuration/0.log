@@ -1304,3 +1304,215 @@ Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: Could not find
 2020-06-03 11:28:37,590 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2020-06-03 11:28:37,596 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2020-06-03 11:28:37,597 [Worker-27] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\java.web\src\test\resources
+2020-06-04 09:50:18,826 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: PrimerProjecto:java.web:0.0.1-SNAPSHOT @ C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\java.web\pom.xml.
+2020-06-04 09:51:07,832 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-04 09:51:07,882 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-04 09:51:08,057 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-04 09:51:08,066 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-04 09:51:08,067 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\java.web\src\test\resources
+2020-06-04 09:52:51,657 [Worker-5] WARN  o.e.r.models.ModelRepository - Failed to download org.eclipse.recommenders:index::zip:0.0.0
+org.eclipse.aether.resolution.ArtifactResolutionException: Could not find artifact org.eclipse.recommenders:index:zip:0.0.0-SNAPSHOT in models (http://download.eclipse.org/recommenders/models/mars/)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:444) ~[na:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246) ~[na:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223) ~[na:na]
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294) ~[na:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:190) [org.eclipse.recommenders.models_2.2.0.v20150609-1848.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:172) [org.eclipse.recommenders.models_2.2.0.v20150609-1848.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:167) [org.eclipse.recommenders.models.rcp_2.2.0.v20150609-1848.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:76) [org.eclipse.recommenders.models.rcp_2.2.0.v20150609-1848.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55) [org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:na]
+Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: Could not find artifact org.eclipse.recommenders:index:zip:0.0.0-SNAPSHOT in models (http://download.eclipse.org/recommenders/models/mars/)
+	at org.eclipse.aether.connector.basic.ArtifactTransportListener.transferFailed(ArtifactTransportListener.java:39) ~[org.eclipse.aether.connector.basic_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$TaskRunner.run(BasicRepositoryConnector.java:355) ~[org.eclipse.aether.connector.basic_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.util.concurrency.RunnableErrorForwarder$1.run(RunnableErrorForwarder.java:67) ~[na:na]
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$DirectExecutor.execute(BasicRepositoryConnector.java:581) ~[org.eclipse.aether.connector.basic_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector.get(BasicRepositoryConnector.java:249) ~[org.eclipse.aether.connector.basic_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads(DefaultArtifactResolver.java:520) ~[na:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:421) ~[na:na]
+	... 8 common frames omitted
+2020-06-04 10:03:07,298 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-04 10:03:07,468 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-04 10:03:07,480 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-04 10:03:07,490 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-04 10:03:07,491 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\java.web\src\test\resources
+2020-06-04 10:03:14,247 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-04 10:03:14,328 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-04 10:03:14,333 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-04 10:03:14,379 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-04 10:03:14,404 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\java.web\src\test\resources
+2020-06-05 11:58:37,401 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:58:37,698 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:58:37,850 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:58:37,861 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:58:37,861 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\java.web\src\test\resources
+2020-06-05 10:56:01,297 [Worker-24] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.estados:aplicacion:0.0.1-SNAPSHOT @ C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\pom.xml.
+2020-06-05 10:56:11,629 [Worker-24] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /aplicacion/src/main/java
+2020-06-05 10:56:11,655 [Worker-24] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /aplicacion/src/main/resources
+2020-06-05 10:56:11,728 [Worker-24] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /aplicacion/src/main/resources
+2020-06-05 10:56:11,809 [Worker-24] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /aplicacion/src/test/java
+2020-06-05 10:56:19,100 [Worker-24] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 47 sec
+2020-06-05 10:56:36,230 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 10:56:36,234 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 10:56:36,255 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 10:56:36,274 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 10:56:36,277 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 10:58:50,582 [Worker-26] WARN  o.e.r.models.ModelRepository - Failed to download org.eclipse.recommenders:index::zip:0.0.0
+org.eclipse.aether.resolution.ArtifactResolutionException: Could not find artifact org.eclipse.recommenders:index:zip:0.0.0-SNAPSHOT in models (http://download.eclipse.org/recommenders/models/mars/)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:444) ~[na:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246) ~[na:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223) ~[na:na]
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294) ~[na:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:190) [org.eclipse.recommenders.models_2.2.0.v20150609-1848.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:172) [org.eclipse.recommenders.models_2.2.0.v20150609-1848.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:167) [org.eclipse.recommenders.models.rcp_2.2.0.v20150609-1848.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:76) [org.eclipse.recommenders.models.rcp_2.2.0.v20150609-1848.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55) [org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:na]
+Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: Could not find artifact org.eclipse.recommenders:index:zip:0.0.0-SNAPSHOT in models (http://download.eclipse.org/recommenders/models/mars/)
+	at org.eclipse.aether.connector.basic.ArtifactTransportListener.transferFailed(ArtifactTransportListener.java:39) ~[org.eclipse.aether.connector.basic_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$TaskRunner.run(BasicRepositoryConnector.java:355) ~[org.eclipse.aether.connector.basic_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.util.concurrency.RunnableErrorForwarder$1.run(RunnableErrorForwarder.java:67) ~[na:na]
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$DirectExecutor.execute(BasicRepositoryConnector.java:581) ~[org.eclipse.aether.connector.basic_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector.get(BasicRepositoryConnector.java:249) ~[org.eclipse.aether.connector.basic_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads(DefaultArtifactResolver.java:520) ~[na:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:421) ~[na:na]
+	... 8 common frames omitted
+2020-06-05 11:00:23,238 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:00:23,266 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:00:23,275 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:00:23,293 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:00:23,294 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:05:29,046 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:05:29,051 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:05:29,058 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:05:29,064 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:05:29,065 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:06:16,006 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:06:16,013 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:06:16,019 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:06:16,026 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:06:16,026 [Worker-33] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:07:10,052 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:07:10,055 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:07:10,060 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:07:10,066 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:07:10,066 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:10:37,760 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:10:37,764 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:10:37,770 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:10:37,775 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:10:37,776 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:16:32,022 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:16:32,025 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:16:32,031 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:16:32,092 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:16:32,093 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:19:31,850 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:19:31,854 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:19:31,860 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:19:31,865 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:19:31,865 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:24:39,323 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:24:39,328 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:24:39,333 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:24:39,338 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:24:39,350 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:26:53,667 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:26:53,672 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:26:53,680 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:26:53,693 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:26:53,694 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:29:10,163 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:29:10,167 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:29:10,182 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:29:10,193 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:29:10,194 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:43:37,655 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:43:37,659 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:43:37,666 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:43:37,672 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:43:37,673 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:44:14,554 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:44:14,559 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:44:14,566 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:44:14,573 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:44:14,573 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:44:17,603 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:44:17,623 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:44:17,631 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:44:17,637 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:44:17,639 [Worker-40] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:47:08,813 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:47:08,819 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:47:08,833 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:47:08,909 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:47:08,910 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:49:52,340 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:49:52,344 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:49:52,350 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:49:52,356 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:49:52,357 [Worker-39] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:54:59,785 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:54:59,792 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:54:59,822 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:54:59,840 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:54:59,841 [Worker-41] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-05 11:59:36,379 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:59:36,382 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-05 11:59:36,390 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-05 11:59:36,399 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-05 11:59:36,400 [Worker-38] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-06 23:33:44,103 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-06 23:33:44,150 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-06 23:33:44,228 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-06 23:33:44,243 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-06 23:33:44,243 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-06 23:54:46,590 [Worker-16] WARN  o.e.r.models.ModelRepository - Failed to download org.eclipse.recommenders:index::zip:0.0.0
+org.eclipse.aether.resolution.ArtifactResolutionException: Could not find artifact org.eclipse.recommenders:index:zip:0.0.0-SNAPSHOT in models (http://download.eclipse.org/recommenders/models/mars/)
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:444) ~[na:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts(DefaultArtifactResolver.java:246) ~[na:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact(DefaultArtifactResolver.java:223) ~[na:na]
+	at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact(DefaultRepositorySystem.java:294) ~[na:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolveInternal(ModelRepository.java:190) [org.eclipse.recommenders.models_2.2.0.v20150609-1848.jar:na]
+	at org.eclipse.recommenders.models.ModelRepository.resolve(ModelRepository.java:172) [org.eclipse.recommenders.models_2.2.0.v20150609-1848.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.EclipseModelRepository.resolve(EclipseModelRepository.java:167) [org.eclipse.recommenders.models.rcp_2.2.0.v20150609-1848.jar:na]
+	at org.eclipse.recommenders.internal.models.rcp.DownloadModelArchiveJob.run(DownloadModelArchiveJob.java:76) [org.eclipse.recommenders.models.rcp_2.2.0.v20150609-1848.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55) [org.eclipse.core.jobs_3.7.0.v20150330-2103.jar:na]
+Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: Could not find artifact org.eclipse.recommenders:index:zip:0.0.0-SNAPSHOT in models (http://download.eclipse.org/recommenders/models/mars/)
+	at org.eclipse.aether.connector.basic.ArtifactTransportListener.transferFailed(ArtifactTransportListener.java:39) ~[org.eclipse.aether.connector.basic_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$TaskRunner.run(BasicRepositoryConnector.java:355) ~[org.eclipse.aether.connector.basic_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.util.concurrency.RunnableErrorForwarder$1.run(RunnableErrorForwarder.java:67) ~[na:na]
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector$DirectExecutor.execute(BasicRepositoryConnector.java:581) ~[org.eclipse.aether.connector.basic_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.connector.basic.BasicRepositoryConnector.get(BasicRepositoryConnector.java:249) ~[org.eclipse.aether.connector.basic_1.0.1.v20141111.jar:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads(DefaultArtifactResolver.java:520) ~[na:na]
+	at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve(DefaultArtifactResolver.java:421) ~[na:na]
+	... 8 common frames omitted
+2020-06-06 23:58:12,238 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-06 23:58:12,253 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-06 23:58:12,284 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-06 23:58:12,284 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-06 23:58:12,284 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-06 23:58:28,238 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-06 23:58:28,269 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-06 23:58:28,285 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-06 23:58:28,285 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-06 23:58:28,285 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-06 23:59:29,204 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-06 23:59:29,204 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-06 23:59:29,204 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-06 23:59:29,204 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-06 23:59:29,220 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-07 00:00:09,265 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-07 00:00:09,280 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-07 00:00:09,280 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-07 00:00:09,280 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-07 00:00:09,280 [Worker-16] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-07 00:03:51,580 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-07 00:03:51,580 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-07 00:03:51,596 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-07 00:03:51,596 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-07 00:03:51,596 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources
+2020-06-07 00:06:49,631 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-07 00:06:49,646 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-06-07 00:06:49,646 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-06-07 00:06:49,646 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-06-07 00:06:49,646 [Worker-20] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion\src\test\resources

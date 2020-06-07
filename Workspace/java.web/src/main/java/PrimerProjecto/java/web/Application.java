@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;;
 
 
 @SpringBootApplication 	
-@RestController			
+@RestController
 public class Application {
 
 	public static void main(String[] args) {
@@ -27,6 +27,7 @@ public class Application {
 	public String recibirPersona(@PathVariable String nombre,@PathVariable String apellido) {
 		return String.format("Hola %s %s!", nombre, apellido);
 	}
+	
 }
 
 

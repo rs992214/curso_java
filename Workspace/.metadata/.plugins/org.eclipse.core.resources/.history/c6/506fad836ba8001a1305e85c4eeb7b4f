@@ -1,0 +1,24 @@
+package com.estados.aplicacion.controllers;
+
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("posteo")
+public class PosteoController {
+
+	@GetMapping("/")
+	public String mostrarPosteos(){
+		return String.format("Aca irian todos los posteos.");
+	}
+	
+	@GetMapping("/{id}")
+	public String mostrarPosteo(@PathVariable int id){
+		return String.format("Mostraría el posteo correspontiente al id %d", id);
+	}
+	
+	@PostMapping("/")
+	public String publicarPosteo(){
+		return String.format("");
+	}
+	
+}
