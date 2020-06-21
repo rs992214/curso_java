@@ -1,0 +1,233 @@
+package ejemplo.baseDatos.estadoAnimo.controller;
+
+import java.util.ArrayList;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import ejemplo.baseDatos.estadoAnimo.dto.EstadoDto;
+import ejemplo.baseDatos.estadoAnimo.dto.PersonaDto;
+import ejemplo.baseDatos.estadoAnimo.dto.PosteoDto;
+import ejemplo.baseDatos.estadoAnimo.dto.PosteoSalidaDto;
+import ejemplo.baseDatos.estadoAnimo.model.Estado;
+import ejemplo.baseDatos.estadoAnimo.model.Persona;
+import ejemplo.baseDatos.estadoAnimo.model.Posteo;
+import ejemplo.baseDatos.estadoAnimo.repository.EstadoRepository;
+import ejemplo.baseDatos.estadoAnimo.repository.PersonaRepository;
+import ejemplo.baseDatos.estadoAnimo.repository.PosteoRepository;
+
+@RestController
+@RequestMapping("posteo")
+public class PosteoController {
+	
+	@Autowired
+	private PosteoRepository posteoRepository;
+	
+	@Autowired
+	private PersonaRepository personaRepository;
+	
+	@Autowired
+	private EstadoRepository estadoRepository;
+	
+	@GetMapping("/")
+	public ResponseEntity mostrarTodos(){
+		try{
+			Iterable<Posteo> lista;
+			ArrayList<PosteoSalidaDto> listaSalida = new ArrayList<PosteoSalidaDto>();
+			
+			lista = posteoRepository.findAll();
+			lista.forEach(registro->{
+				EstadoDto estado = new EstadoDto();
+				PersonaDto persona = new PersonaDto();
+				PosteoSalidaDto posteo = new PosteoSalidaDto();
+				
+				estado.setId(registro.getEstado().getId());
+				estado.setNombre(registro.getEstado().getNombre());
+				
+				persona.setId(registro.getPersona().getId());
+				persona.setNombre(registro.getPersona().getNombre());
+				persona.setApellido(registro.getPersona().getApellido());
+				persona.setEdad(registro.getPersona().getEdad());
+				persona.setNickname(registro.getPersona().getNickname());
+				persona.setMail(registro.getPersona().getMail());
+				
+				posteo.setId(registro.getId());
+				posteo.setMensaje(registro.getMensaje());
+				posteo.setEstado(estado);
+				posteo.setPersona(persona);
+				
+				listaSalida.add(posteo);
+			});
+			
+			return ResponseEntity.ok(listaSalida);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+e);
+		}
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity mostrarUno(@PathVariable int id){
+		try{
+			PosteoSalidaDto posteo = new PosteoSalidaDto();
+			PersonaDto persona = new PersonaDto();
+			EstadoDto estado = new EstadoDto();
+			Posteo unPosteo;
+			Persona unaPersona;
+			Estado unEstado;
+			
+			if(!posteoRepository.findById(id).isPresent()){
+				throw new Exception("No existe posteo con ese Id.");
+			}
+			unPosteo = posteoRepository.findById(id).get();
+			unaPersona = personaRepository.findById(unPosteo.getPersona().getId()).get();
+			unEstado = estadoRepository.findById(unPosteo.getEstado().getId()).get();
+			
+			estado.setId(unEstado.getId());
+			estado.setNombre(unEstado.getNombre());
+			
+			persona.setId(unaPersona.getId());
+			persona.setNombre(unaPersona.getNombre());
+			persona.setApellido(unaPersona.getApellido());
+			persona.setEdad(unaPersona.getEdad());
+			persona.setNickname(unaPersona.getNickname());
+			persona.setMail(unaPersona.getMail());
+			
+			posteo.setId(id);
+			posteo.setMensaje(unPosteo.getMensaje());
+			posteo.setPersona(persona);
+			posteo.setEstado(estado);
+			
+			return ResponseEntity.ok(posteo);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+e);
+
+		}
+	}
+	
+	@PostMapping("/")
+	public ResponseEntity guardar(@RequestBody PosteoDto posteoEntrada){
+		try{
+			Posteo posteo;
+			Optional<Persona> unaPersona;
+			Optional<Estado> unEstado;
+			PosteoSalidaDto posteoSalida = new PosteoSalidaDto();
+			PersonaDto persona = new PersonaDto();
+			EstadoDto estado = new EstadoDto();
+			
+			unaPersona = personaRepository.findById(posteoEntrada.getPersona_id());
+			unEstado = estadoRepository.findById(posteoEntrada.getEstado_id());
+			
+			if(posteoEntrada.getMensaje().isEmpty()){
+				throw new Exception("El mensaje no puede estar vacio.");
+			}
+			if(posteoEntrada.getMensaje().length()>240){
+				throw new Exception("La longitud del mensaje supera el limite de caracteres.");
+			}
+			if(!unaPersona.isPresent()){
+				throw new Exception("La persona indicada no existe.");
+			}
+			if(!unEstado.isPresent()){
+				throw new Exception("El estado indicado no existe.");
+			}
+			
+			posteo = new Posteo(posteoEntrada.getMensaje(), unaPersona.get(), unEstado.get());
+			posteoRepository.save(posteo);
+			
+			estado.setId(unEstado.get().getId());
+			estado.setNombre(unEstado.get().getNombre());
+			
+			persona.setId(unaPersona.get().getId());
+			persona.setNombre(unaPersona.get().getNombre());
+			persona.setEdad(unaPersona.get().getEdad());
+			persona.setNickname(unaPersona.get().getNickname());
+			persona.setMail(unaPersona.get().getMail());
+			
+			posteoSalida.setId(posteo.getId());
+			posteoSalida.setMensaje(posteo.getMensaje());
+			posteoSalida.setEstado(estado);
+			posteoSalida.setPersona(persona);
+			
+			return ResponseEntity.ok(posteoSalida);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+e);
+
+		}
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity actualizar(@RequestBody PosteoDto posteoEntrada, @PathVariable int id){
+		try{
+			Posteo posteo;
+			Optional<Persona> unaPersona;
+			Optional<Estado> unEstado;
+			PosteoSalidaDto posteoSalida = new PosteoSalidaDto();
+			PersonaDto persona = new PersonaDto();
+			EstadoDto estado = new EstadoDto();
+			
+			unaPersona = personaRepository.findById(posteoEntrada.getPersona_id());
+			unEstado = estadoRepository.findById(posteoEntrada.getEstado_id());
+			
+			if(!posteoRepository.findById(id).isPresent()){
+				throw new Exception("No existe mensaje con ese Id.");
+			}
+			if(posteoEntrada.getMensaje().isEmpty()){
+				throw new Exception("El mensaje no puede estar vacio.");
+			}
+			if(posteoEntrada.getMensaje().length()>240){
+				throw new Exception("La longitud del mensaje supera el limite de caracteres.");
+			}
+			if(!unaPersona.isPresent()){
+				throw new Exception("La persona indicada no existe.");
+			}
+			if(!unEstado.isPresent()){
+				throw new Exception("El estado indicado no existe.");
+			}
+			
+			posteo = new Posteo(posteoEntrada.getMensaje(), unaPersona.get(), unEstado.get());
+			posteo.setId(id);
+			posteoRepository.save(posteo);
+			
+			estado.setId(unEstado.get().getId());
+			estado.setNombre(unEstado.get().getNombre());
+			
+			persona.setId(unaPersona.get().getId());
+			persona.setNombre(unaPersona.get().getNombre());
+			persona.setEdad(unaPersona.get().getEdad());
+			persona.setNickname(unaPersona.get().getNickname());
+			persona.setMail(unaPersona.get().getMail());
+			
+			posteoSalida.setId(posteo.getId());
+			posteoSalida.setMensaje(posteo.getMensaje());
+			posteoSalida.setEstado(estado);
+			posteoSalida.setPersona(persona);
+			
+			return ResponseEntity.ok(posteoSalida);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+e);
+
+		}
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity borrar(@PathVariable int id){
+		try{
+			if(!posteoRepository.findById(id).isPresent()){
+				throw new Exception("No hay posteo con ese id.");
+			}
+			
+			posteoRepository.deleteById(id);
+			
+			return ResponseEntity.ok("El registro fue eliminado correctamente.");
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+e);
+		}
+	}
+}

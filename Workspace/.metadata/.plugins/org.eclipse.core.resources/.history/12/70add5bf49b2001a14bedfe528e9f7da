@@ -1,0 +1,17 @@
+package com.ejemplor.relaciones.models;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tipo_documento")
+public class TipoDocumento {
+	@id
+	@
+	private int id;
+	
+	private String nombre;
+	
+	private String descripcion;
+
+}

@@ -1,0 +1,12 @@
+package com.ejemplor.relaciones.dto;
+
+public class PersonaDto {
+	
+	int id;
+	String nombre;
+	String apellido;
+	int tipo_documento_id;
+	
+	
+
+}

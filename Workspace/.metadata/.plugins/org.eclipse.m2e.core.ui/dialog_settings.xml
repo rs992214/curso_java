@@ -14,9 +14,17 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\appRelaciones"/>
+			<item value="C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\relaciones"/>
+			<item value="C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\estadoAnimoLorena"/>
+			<item value="C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\estadoAnimoLorena\.mvn"/>
+			<item value="C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\estadoAnimo"/>
+			<item value="C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\pacientes"/>
+			<item value="C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\posteo"/>
 			<item value="C:\Users\mrubi\Desktop\Educación\UTN\Java\Workspace\aplicacion"/>
 		</list>
 		<list key="projectNameTemplate">
+			<item value="Lorena"/>
 			<item value="[artifactId]"/>
 			<item value="[artifactId]-TRUNK"/>
 			<item value="[artifactId]-[version]"/>

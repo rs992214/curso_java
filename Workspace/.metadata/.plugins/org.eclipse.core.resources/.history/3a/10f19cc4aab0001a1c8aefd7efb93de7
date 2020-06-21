@@ -1,0 +1,184 @@
+package ejemplo.baseDatos.estadoAnimo.controller;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import ejemplo.baseDatos.estadoAnimo.dto.PersonaDTO;
+import ejemplo.baseDatos.estadoAnimo.model.Persona;
+import ejemplo.baseDatos.estadoAnimo.repository.PersonaRepository;
+
+@RestController
+@RequestMapping("persona")
+public class PersonaController {
+
+	@Autowired
+	private PersonaRepository personaRepository;
+	
+	@GetMapping("/")
+	public ResponseEntity mostrarTodos(){
+		Iterable<Persona> lista;
+		lista = personaRepository.findAll();
+		return ResponseEntity.ok(lista);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity mostrarUno(@PathVariable int id){
+		Optional<Persona> persona;
+		persona = personaRepository.findById(id);
+		
+		if(persona.isPresent()){
+			return ResponseEntity.ok(persona);
+		}
+		else{
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No hay persona con ese Id");
+		}
+	}
+	
+	@PostMapping("/")
+	public ResponseEntity cargarPersona(@RequestBody PersonaDTO persona){
+		try{
+			if(persona.getNombre().isEmpty()){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falta Nombre");
+			}
+			if(persona.getApellido().isEmpty()){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falta Apellido");
+			}
+			if(persona.getEdad()<0){
+				//probar edad nula
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Edad incorrecta");
+			}
+			if(persona.getNickname().isEmpty()){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falta Nickname");
+			}
+			
+			if(persona.getNombre().length()>20 || persona.getNombre().length() < 3){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Longitud del nombre incorrecta");
+			}
+			if(persona.getApellido().length()>25 || persona.getApellido().length() < 3){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Longitud del apellido incorrecta");
+			}
+			if(persona.getNickname().length()<5 || persona.getNickname().length()>10){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Longitud del nickname incorreccta");
+			}
+			if(!persona.getMail().isEmpty()&&(persona.getMail().length()>70 || persona.getMail().length()<10)){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Longitud del mail incorrecta");
+			}
+			
+			//comprobacion de usuario y mails repetidos
+			if(!persona.getMail().isEmpty() && personaRepository.findByMail(persona.getMail()).isPresent()){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ese mail ya esta en uso.");
+			}
+			
+			if(personaRepository.findByNickname(persona.getNickname()).isPresent()){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ese Nickname ya esta en uso.");
+			}
+			
+			
+			//cargar persona
+			Persona unaPersona = new Persona();
+			unaPersona.setNombre(persona.getNombre());
+			unaPersona.setApellido(persona.getApellido());
+			unaPersona.setEdad(persona.getEdad());
+			unaPersona.setNickname(persona.getNickname());
+			if(!persona.getMail().isEmpty()){
+				unaPersona.setMail(persona.getMail());
+			}
+			
+			//no funcionaba por el generation type del id... creo
+			personaRepository.save(unaPersona);
+			return ResponseEntity.ok(unaPersona);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hubo un error grave: "+ e);
+		}
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity cambiarDatos(@PathVariable int id, @RequestBody PersonaDTO persona){
+		try{
+			Optional<Persona> unaPersona = personaRepository.findById(id);
+			
+			if(!unaPersona.isPresent()){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No hay persona con ese Id");
+			}
+			else{
+				if(persona.getNombre().isEmpty()){
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falta Nombre");
+				}
+				if(persona.getApellido().isEmpty()){
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falta Apellido");
+				}
+				if(persona.getEdad()<0){
+					//probar edad nula
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Edad incorrecta");
+				}
+				if(persona.getNickname().isEmpty()){
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falta Nickname");
+				}
+				
+				if(persona.getNombre().length()>20 || persona.getNombre().length() < 3){
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Longitud del nombre incorrecta");
+				}
+				if(persona.getApellido().length()>25 || persona.getApellido().length() < 3){
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Longitud del apellido incorrecta");
+				}
+				if(persona.getNickname().length()<5 || persona.getNickname().length()>10){
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Longitud del nickname incorreccta");
+				}
+				if(!persona.getMail().isEmpty()&&(persona.getMail().length()>70 || persona.getMail().length()<10)){
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Longitud del mail incorrecta");
+				}
+				
+				//comprobacion mails y nickname repetidos
+				if(!persona.getMail().isEmpty() && personaRepository.findByMail(persona.getMail()).isPresent()){
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ese mail ya esta en uso.");
+				}
+				
+				if(personaRepository.findByNickname(persona.getNickname()).isPresent()){
+					return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ese Nickname ya esta en uso.");
+				}
+				
+				
+				Persona laPersona = new Persona();
+				laPersona.setId(id);
+				laPersona.setNombre(persona.getNombre());
+				laPersona.setApellido(persona.getApellido());
+				laPersona.setEdad(persona.getEdad());
+				laPersona.setNickname(persona.getNickname());
+				if(!persona.getMail().isEmpty()){
+					laPersona.setMail(persona.getMail());
+				}
+				
+				//no funciona correctamente
+				personaRepository.save(laPersona);
+				return ResponseEntity.ok(laPersona);
+			}			
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hubo un error grave: "+ e);
+		}
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity borrarPersona(@PathVariable int id){
+		try{
+			Optional<Persona> unaPersona = personaRepository.findById(id);
+			if(!unaPersona.isPresent()){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No hay persona con ese Id");
+			}
+			else{
+				personaRepository.deleteById(id);
+				
+				return ResponseEntity.ok("Se elimino correctamente el registro");
+			}
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("hubo un problema grave: " + e);
+		}
+	}
+	
+}

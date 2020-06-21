@@ -1,0 +1,30 @@
+package com.ejemplor.relaciones.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.ejemplor.relaciones.models.Persona;
+import com.ejemplor.relaciones.models.TipoDocumento;
+import com.ejemplor.relaciones.repository.PersonaRepository;
+
+@RestController
+@RequestMapping("persona")
+public class PersonaController {
+
+	@Autowired
+	private PersonaRepository personaRepository;
+	
+	@GetMapping("/")
+	public ResponseEntity listarTodos(){
+		try{
+			Iterable<Persona> lista;
+			lista = personaRepository.findAll();
+			return ResponseEntity.ok(lista);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e);
+		}
+	}
+}

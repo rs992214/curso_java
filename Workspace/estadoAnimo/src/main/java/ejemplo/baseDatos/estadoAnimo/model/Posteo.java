@@ -1,0 +1,71 @@
+package ejemplo.baseDatos.estadoAnimo.model;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+@Entity
+@Table(name="posteo_dos")
+public class Posteo {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	
+	@NotEmpty
+	@Length(min=0, max=240)
+	private String mensaje;
+	
+	@ManyToOne()
+	@JoinColumn(name="persona_id", nullable = false)
+	private Persona persona;
+	
+	@ManyToOne()
+	@JoinColumn(name="estado_id", nullable = false)
+	private Estado estado;
+
+	
+	public Posteo() {
+		super();
+	}
+
+	public Posteo(@NotEmpty @Length(min = 0, max = 240) String mensaje, Persona persona, Estado estado) {
+		super();
+		this.mensaje = mensaje;
+		this.persona = persona;
+		this.estado = estado;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getMensaje() {
+		return mensaje;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
+}

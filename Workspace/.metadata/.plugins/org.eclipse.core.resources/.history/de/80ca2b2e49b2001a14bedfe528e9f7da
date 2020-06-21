@@ -1,0 +1,5 @@
+package com.ejemplor.relaciones.models;
+
+public class TipoDocumento {
+
+}

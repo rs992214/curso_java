@@ -1,0 +1,16 @@
+package com.ejemplor.relaciones.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.ejemplor.relaciones.repository.PersonaRepository;
+
+@RestController
+@RequestMapping("persona")
+public class PersonaController {
+
+	@Autowired
+	private PersonaRepository personaRepository;
+	
+	
+}

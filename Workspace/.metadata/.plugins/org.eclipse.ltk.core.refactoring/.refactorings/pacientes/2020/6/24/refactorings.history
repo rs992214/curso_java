@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;triage.pacientes.DTO.TraigeDTO&apos; to &apos;TriageDTO&apos;&#x0D;&#x0A;- Original project: &apos;pacientes&apos;&#x0D;&#x0A;- Original element: &apos;triage.pacientes.DTO.TraigeDTO&apos;&#x0D;&#x0A;- Renamed element: &apos;triage.pacientes.DTO.TriageDTO&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;TraigeDTO&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;triage.pacientes.DTO{TraigeDTO.java[TraigeDTO" matchStrategy="1" name="TriageDTO" qualified="false" references="true" similarDeclarations="false" stamp="1591752790540" textual="false" version="1.0"/>
+</session>

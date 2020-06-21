@@ -1,0 +1,66 @@
+package ejemplo.baseDatos.estadoAnimo.controller;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import ejemplo.baseDatos.estadoAnimo.dto.EstadoDto;
+import ejemplo.baseDatos.estadoAnimo.dto.PersonaDto;
+import ejemplo.baseDatos.estadoAnimo.dto.PosteoDto;
+import ejemplo.baseDatos.estadoAnimo.dto.PosteoSalidaDto;
+import ejemplo.baseDatos.estadoAnimo.model.Posteo;
+import ejemplo.baseDatos.estadoAnimo.repository.PosteoRepository;
+
+@RestController
+@RequestMapping("posteo")
+public class PosteoController {
+	
+	@Autowired
+	private PosteoRepository posteoRepository;
+	
+	@GetMapping("/")
+	public ResponseEntity mostrarTodos(){
+		try{
+			Iterable<Posteo> lista;
+			ArrayList<PosteoSalidaDto> listaSalida = new ArrayList<PosteoSalidaDto>();
+			
+			lista = posteoRepository.findAll();
+			lista.forEach(registro->{
+				EstadoDto estado = new EstadoDto();
+				PersonaDto persona = new PersonaDto();
+				PosteoSalidaDto posteo = new PosteoSalidaDto();
+				
+				estado.setId(registro.getEstado().getId());
+				estado.setNombre(registro.getEstado().getNombre());
+				
+				persona.setId(registro.getPersona().getId());
+				persona.setNombre(registro.getPersona().getNombre());
+				persona.setApellido(registro.getPersona().getApellido());
+				persona.setEdad(registro.getPersona().getEdad());
+				persona.setNickname(registro.getPersona().getNickname());
+				persona.setMail(registro.getPersona().getMail());
+				
+				posteo.setId(registro.getId());
+				posteo.setMensaje(registro.getMensaje());
+				posteo.setEstado(estado);
+				posteo.setPersona(persona);
+				
+				listaSalida.add(posteo);
+			});
+			
+			return ResponseEntity.ok(listaSalida);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+e);
+		}
+	}
+	
+	
+	
+	
+	
+
+}

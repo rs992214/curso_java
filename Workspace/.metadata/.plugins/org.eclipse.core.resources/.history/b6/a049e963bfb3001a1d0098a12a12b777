@@ -1,0 +1,9 @@
+package ejemplo.baseDatos.estadoAnimo.dto;
+
+public class PosteoDto {
+
+	private int id;
+	private String mensaje;
+	private int persona_id;
+	private int estado_id;
+}

@@ -1,0 +1,5 @@
+package com.ejemplor.relaciones.repository;
+
+public interface TipoDocumentoRepository {
+
+}

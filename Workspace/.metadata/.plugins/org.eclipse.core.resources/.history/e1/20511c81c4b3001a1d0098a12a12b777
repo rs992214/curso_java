@@ -1,0 +1,109 @@
+package ejemplo.baseDatos.estadoAnimo.controller;
+
+import java.util.ArrayList;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import ejemplo.baseDatos.estadoAnimo.dto.EstadoDto;
+import ejemplo.baseDatos.estadoAnimo.model.Estado;
+import ejemplo.baseDatos.estadoAnimo.repository.EstadoRepository;
+
+@RestController
+@RequestMapping("estado")
+public class Estadocontroller {
+	
+	@Autowired
+	private EstadoRepository estadoRepository;
+	//estos dos conecan con los repository para manejar la base de datos
+	
+	@GetMapping("/")
+	public ResponseEntity ListarTodos(){
+		try{
+			Iterable<Estado> lista;
+			lista = estadoRepository.findAll();//SELECT * FROM estado
+			ArrayList<EstadoDto> listaSalida= new ArrayList<EstadoDto>();
+			
+			lista.forEach(registro->{
+				EstadoDto estado = new EstadoDto();
+				estado.setId(registro.getId());
+				estado.setNombre(registro.getNombre());
+				listaSalida.add(estado);
+			});
+			return ResponseEntity.ok(listaSalida);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+ e);
+		}
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity ListarUno(@PathVariable int id){
+		try{
+			
+			rerurn ResponseEntity.ok("todo");
+		}
+		catch(Exception e){}
+		
+	}
+	
+	@PostMapping("/")
+	public ResponseEntity guardar(@RequestBody EstadoDto unEstado){
+		try{
+			Estado estado = new Estado();
+			
+			if(unEstado.getNombre().isEmpty()){
+				//mensaje de error
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falta nombre");
+			}
+			else{
+				estado.setNombre(unEstado.getNombre());
+				estadoRepository.save(estado);				
+				return ResponseEntity.ok(estado);
+			}
+		}
+		catch(Exception e){
+			//prueba y si no puede realizar el try, guarda el error en "e" para mostrarlo en el error
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hubo un error grave: "+ e);
+		}
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity modificar(@RequestBody EstadoDto unEstado, @PathVariable int id){
+		try{
+			Estado estado = new Estado();
+			Optional<Estado> x;
+			
+			if(unEstado.getNombre().isEmpty()){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falta nombre");
+			}
+			
+			x = estadoRepository.findByNombre(unEstado.getNombre());
+			//REVISAR!
+			if(x.isPresent()){
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Nombre repetido");
+			}
+			estado.setId(id);
+			estado.setNombre(unEstado.getNombre());
+			estadoRepository.save(estado);
+			return ResponseEntity.ok(estado);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hubo un error grave: "+ e);
+		}
+	}
+	@DeleteMapping("/{id}")
+	public ResponseEntity borrar(@PathVariable int id){
+		try{
+			estadoRepository.deleteById(id);
+			
+			return ResponseEntity.ok("Se elimino correctamente");
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("hubo un problema grave: " + e);
+		}
+	}
+}

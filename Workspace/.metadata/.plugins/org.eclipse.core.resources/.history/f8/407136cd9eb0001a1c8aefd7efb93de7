@@ -1,0 +1,7 @@
+package ejemplo.baseDatos.estadoAnimo.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface PosteoRepository extends CrudRepository<Posteo, Integrer>{
+
+}

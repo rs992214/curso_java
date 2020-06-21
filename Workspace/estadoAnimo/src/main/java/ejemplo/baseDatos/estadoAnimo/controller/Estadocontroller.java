@@ -1,0 +1,141 @@
+package ejemplo.baseDatos.estadoAnimo.controller;
+
+import java.util.ArrayList;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import ejemplo.baseDatos.estadoAnimo.dto.EstadoDto;
+import ejemplo.baseDatos.estadoAnimo.model.Estado;
+import ejemplo.baseDatos.estadoAnimo.repository.EstadoRepository;
+
+@RestController
+@RequestMapping("estado")
+public class Estadocontroller {
+	
+	@Autowired
+	private EstadoRepository estadoRepository;
+	//estos dos conecan con los repository para manejar la base de datos
+	
+	@GetMapping("/")
+	public ResponseEntity ListarTodos(){
+		try{
+			Iterable<Estado> lista;
+			lista = estadoRepository.findAll();//SELECT * FROM estado
+			ArrayList<EstadoDto> listaSalida= new ArrayList<EstadoDto>();
+			
+			lista.forEach(registro->{
+				EstadoDto estado = new EstadoDto();
+				estado.setId(registro.getId());
+				estado.setNombre(registro.getNombre());
+				listaSalida.add(estado);
+			});
+			return ResponseEntity.ok(listaSalida);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+ e);
+		}
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity ListarUno(@PathVariable int id){
+		try{
+			EstadoDto estado = new EstadoDto();
+			Optional<Estado> unEstado;
+			
+			unEstado = estadoRepository.findById(id);
+			
+			if(!unEstado.isPresent()){
+				throw new Exception("No existe registro con ese id");
+			}
+			
+			estado.setId(unEstado.get().getId());
+			estado.setNombre(unEstado.get().getNombre());
+			
+			return ResponseEntity.ok(estado);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+ e);
+		}
+		
+	}
+	
+	@PostMapping("/")
+	public ResponseEntity guardar(@RequestBody EstadoDto unEstado){
+		try{
+			Estado estado = new Estado();
+			
+			if(unEstado.getNombre().isEmpty()){
+				//mensaje de error
+				//return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falta nombre");
+				throw new Exception("Falta campo nombre.");
+			}
+			if(unEstado.getNombre().length()<5||unEstado.getNombre().length()>15){
+				throw new Exception("Longitud del nombre incorrecta.");
+			}
+			if(estadoRepository.findByNombre(unEstado.getNombre()).isPresent()){
+				throw new Exception("Ya existe un estado con ese nombre.");
+			}
+			
+			estado.setNombre(unEstado.getNombre());
+			estadoRepository.save(estado);
+			unEstado.setId(estado.getId());
+			return ResponseEntity.ok(unEstado);
+			
+		}
+		catch(Exception e){
+			//prueba y si no puede realizar el try, guarda el error en "e" para mostrarlo en el error
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+ e);
+		}
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity modificar(@RequestBody EstadoDto unEstado, @PathVariable int id){
+		try{
+			Estado estado = new Estado();
+			
+			if(unEstado.getNombre().isEmpty()){
+				throw new Exception("Falta campo nombre.");
+			}
+			if(unEstado.getNombre().length()<5||unEstado.getNombre().length()>15){
+				throw new Exception("Longitud del nombre incorrecta.");
+			}
+			if(estadoRepository.findByNombre(unEstado.getNombre()).isPresent()){
+				throw new Exception("Ya existe un estado con ese nombre.");
+			}
+						
+			
+			estado.setId(id);
+			estado.setNombre(unEstado.getNombre());
+			estadoRepository.save(estado);
+			unEstado.setId(id);
+			return ResponseEntity.ok(unEstado);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Hubo un error grave: "+ e);
+		}
+	}
+	@DeleteMapping("/{id}")
+	public ResponseEntity borrar(@PathVariable int id){
+		try{
+			
+			if(!estadoRepository.findById(id).isPresent()){
+				throw new Exception("No hay estado con ese Id.");
+			}
+			
+			if(!estadoRepository.findById(id).get().getPosteos().isEmpty()){
+				throw new Exception("No se puede elimina un estado en uso.");
+			}
+			
+			estadoRepository.deleteById(id);
+			
+			return ResponseEntity.ok("Se elimino correctamente");
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("hubo un problema grave: " + e);
+		}
+	}
+}

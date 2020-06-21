@@ -1,0 +1,5 @@
+package ejemplo.baseDatos.estadoAnimo.model;
+
+public class Posteo {
+
+}

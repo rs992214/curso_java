@@ -1,0 +1,38 @@
+package com.ejemplor.relaciones.models;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+@Entity
+@Table(name="persona")
+public class Persona {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	
+	@NotEmpty
+	@Length(min = 5, max = 25)
+	private String nombre;
+	
+	@NotEmpty
+	@Length(min = 5, max = 25)
+	private String apellido;
+	
+	//relaciones!!!
+	@ManyToOne()
+	@JoinColumn(name="tipo_documento_id")
+	private TipoDocumento tipoDocumento;
+	
+	@NotEmpty
+	@Length(min = 5, max = 20)
+	private String numero_documento;
+}

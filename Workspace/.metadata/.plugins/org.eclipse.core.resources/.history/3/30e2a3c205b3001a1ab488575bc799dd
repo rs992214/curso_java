@@ -1,0 +1,44 @@
+package com.ejemplor.relaciones.dto;
+
+public class PersonaDto {
+	
+	 int id;
+	 String nombre;
+	 String apellido;
+	 int tipo_documento_id;
+	 String numerodocumento;
+	 
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	public int getTipo_documento_id() {
+		return tipo_documento_id;
+	}
+	public void setTipo_documento_id(int tipo_documento_id) {
+		this.tipo_documento_id = tipo_documento_id;
+	}
+	public String getNumerodocumento() {
+		return numerodocumento;
+	}
+	public void setNumerodocumento(String numerodocumento) {
+		this.numerodocumento = numerodocumento;
+	}
+	
+
+}

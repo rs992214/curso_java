@@ -1,0 +1,5 @@
+package com.ejemplor.relaciones.dto;
+
+public class TipoDocumentoDto {
+
+}

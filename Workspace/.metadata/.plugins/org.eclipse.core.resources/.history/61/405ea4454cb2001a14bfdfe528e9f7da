@@ -1,0 +1,93 @@
+package com.ejemplor.relaciones.models;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+@Entity
+@Table(name="persona")
+public class Persona {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
+	
+	@NotEmpty
+	@Length(max = 25)
+	private String nombre;
+	
+	@NotEmpty
+	@Length(max = 25)
+	private String apellido;
+	
+	//relaciones!!!
+	@ManyToOne()
+	@JoinColumn(name="tipo_documento_id", nullable = false)
+	private TipoDocumento tipoDocumento;
+	
+	@NotEmpty
+	@Length(max = 20)
+	private String numeroDocumento;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public TipoDocumento getTipoDocumento() {
+		return tipoDocumento;
+	}
+
+	public void setTipoDocumento(TipoDocumento tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
+
+	public String getNumeroDocumento() {
+		return numeroDocumento;
+	}
+
+	public void setNumeroDocumento(String numero_documento) {
+		this.numeroDocumento = numero_documento;
+	}
+
+	public Persona(@NotEmpty @Length( max = 25) String nombre,
+			@NotEmpty @Length( max = 25) String apellido, TipoDocumento tipoDocumento,
+			@NotEmpty @Length( max = 20) String numero_documento) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.tipoDocumento = tipoDocumento;
+		this.numeroDocumento = numero_documento;
+	}
+
+	public Persona() {
+		super();
+	}
+	
+	
+}

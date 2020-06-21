@@ -1,0 +1,57 @@
+package com.ejemplor.relaciones.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.ejemplor.relaciones.dto.TipoDocumentoDto;
+import com.ejemplor.relaciones.models.TipoDocumento;
+import com.ejemplor.relaciones.repository.TipoDocumentoRepository;
+
+@RestController
+@RequestMapping("documento")
+public class TipoDocumentoController {
+
+	@Autowired
+	private TipoDocumentoRepository documentoRepository;
+	
+	@GetMapping("/")
+	public ResponseEntity listarTodos(){
+		try{
+			Iterable<TipoDocumento> lista;
+			lista = documentoRepository.findAll();
+			return ResponseEntity.ok(lista);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e);
+		}
+	}
+	
+	@PostMapping("/")
+	public ResponseEntity guardar(@RequestBody TipoDocumentoDto documento){
+		try{
+			TipoDocumento unDocumento;
+			
+			if(documento.getNombre().isEmpty()){
+				throw new Exception("El campo del nombre se encuentra vacio.");
+			}
+			if(documento.getNombre().length()>20||documento.getNombre().length()<3){
+				throw new Exception("Longitud del nombre incorrecta.");
+			}
+			if(documento.getDescripcion().length()>150){
+				throw new Exception("Longitud incorrecta de la descripcion.");
+			}
+			
+			unDocumento = new TipoDocumento(documento.getNombre(), documento.getDescripcion());
+			
+			documentoRepository.save(unDocumento);
+			return ResponseEntity.ok(documento);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e);
+		}
+	}
+	
+	
+}

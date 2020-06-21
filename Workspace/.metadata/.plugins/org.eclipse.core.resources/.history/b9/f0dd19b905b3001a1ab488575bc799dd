@@ -1,0 +1,9 @@
+package com.ejemplor.relaciones.dto;
+
+public class TipoDocumentoDto {
+
+	private int id;
+	private String nombre;
+	private String descripcion;
+	
+}

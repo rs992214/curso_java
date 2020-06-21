@@ -1,0 +1,141 @@
+package com.ejemplor.relaciones.controller;
+
+import java.util.ArrayList;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.ejemplor.relaciones.dto.*;
+import com.ejemplor.relaciones.models.Persona;
+import com.ejemplor.relaciones.models.TipoDocumento;
+import com.ejemplor.relaciones.repository.PersonaRepository;
+import com.ejemplor.relaciones.repository.TipoDocumentoRepository;
+
+@RestController
+@RequestMapping("persona")
+public class PersonaController {
+
+	@Autowired
+	private PersonaRepository personaRepository;
+	
+	@Autowired
+	private TipoDocumentoRepository documentoRepository;
+	
+	@GetMapping("/")
+	public ResponseEntity listarTodos(){
+		try{
+			Iterable<Persona> lista;
+			ArrayList<PersonaSalidaDto> listaSalida = new ArrayList<PersonaSalidaDto>();		
+			
+			lista = personaRepository.findAll();
+			
+			lista.forEach(registro ->{
+				PersonaSalidaDto unaPersona = new PersonaSalidaDto();
+				TipoDocumentoDto unDocumento = new TipoDocumentoDto();
+				
+				unDocumento.setId(registro.getTipoDocumento().getId());
+				unDocumento.setNombre(registro.getTipoDocumento().getNombre());
+				unDocumento.setDescripcion(registro.getTipoDocumento().getDescripcion());
+				
+				unaPersona.setId(registro.getId());
+				unaPersona.setNombre(registro.getNombre());
+				unaPersona.setApellido(registro.getApellido());
+				unaPersona.setNumerodocumento(registro.getNumerodocumento());
+				unaPersona.setDocumento(unDocumento);
+				
+				listaSalida.add(unaPersona);
+			});
+			
+			return ResponseEntity.ok(listaSalida);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+e);
+		}
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity mostrarUno(@PathVariable int id){
+		try{
+			Persona persona = new Persona();
+			PersonaSalidaDto unaPersona = new PersonaSalidaDto();
+			TipoDocumentoDto unDocumento = new TipoDocumentoDto();
+			
+			if(!personaRepository.findById(id).isPresent()){
+				throw new Exception("No existe registro con ese Id.");
+			}
+			
+			persona = personaRepository.findById(id).get();
+			
+			unDocumento.setId(persona.getTipoDocumento().getId());
+			unDocumento.setNombre(persona.getTipoDocumento().getNombre());
+			unDocumento.setDescripcion(persona.getTipoDocumento().getDescripcion());
+			unaPersona.setId(persona.getId());
+			unaPersona.setNombre(persona.getNombre());
+			unaPersona.setApellido(persona.getApellido());
+			unaPersona.setNumerodocumento(persona.getNumerodocumento());
+			unaPersona.setDocumento(unDocumento);
+			
+			return ResponseEntity.ok(unaPersona);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+e);
+		}
+	}
+	
+	@PostMapping("/")
+	public ResponseEntity guardar(@RequestBody PersonaDto unaPersona){
+		try{
+			Optional<TipoDocumento> documento;
+			Persona persona;
+			TipoDocumento unDocumento = new TipoDocumento();
+			PersonaSalidaDto personaGuardada = new PersonaSalidaDto();
+			TipoDocumentoDto documentoGuardado = new TipoDocumentoDto();
+						
+			//Controles de datos
+			if(unaPersona.getApellido().isEmpty()||unaPersona.getNombre().isEmpty()||unaPersona.getNumerodocumento().isEmpty()){
+				throw new Exception("Hay datos en blanco.");
+			}		
+			//controlar longitud de cada dato
+			if(unaPersona.getNombre().length()>25){
+				throw new Exception("El nombre supera el limite de caracteres.");
+			}
+			if(unaPersona.getApellido().length()>25){
+				throw new Exception("El apellido supera el limite de caracteres.");
+			}
+			if(unaPersona.getNumerodocumento().length()>20){
+				throw new Exception("El numero de documento supera el limite de caracteres.");
+			}			
+			//controlar tipo de doc existente
+			documento = documentoRepository.findById(unaPersona.getTipo_documento_id());
+			if(!documento.isPresent()){
+				throw new Exception("No existe el tipo de documento");
+			}
+			//mismo documento y mismo numero
+			
+			
+			//guardado de datos
+			unDocumento = documento.get();
+			persona = new Persona(unaPersona.getNombre(),unaPersona.getApellido(), unDocumento, unaPersona.getNumerodocumento());	
+			personaRepository.save(persona);
+			
+			//datos a Mostrar
+			documentoGuardado.setId(unDocumento.getId());
+			documentoGuardado.setNombre(unDocumento.getNombre());
+			documentoGuardado.setDescripcion(unDocumento.getDescripcion());
+			
+			personaGuardada.setApellido(persona.getApellido());
+			personaGuardada.setNombre(persona.getNombre());
+			personaGuardada.setId(persona.getId());
+			personaGuardada.setNumerodocumento(persona.getNumerodocumento());
+			personaGuardada.setDocumento(documentoGuardado);
+			
+			return ResponseEntity.ok(personaGuardada);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Problema: "+e);
+		}
+	}
+}

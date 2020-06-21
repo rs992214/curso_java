@@ -1,0 +1,9 @@
+package com.ejemplor.relaciones.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.ejemplor.relaciones.models.Persona;
+
+public interface PersonaRepository extends CrudRepository<Persona, Integer> {
+
+}

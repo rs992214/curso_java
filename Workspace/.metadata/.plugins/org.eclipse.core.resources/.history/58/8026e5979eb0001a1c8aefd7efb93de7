@@ -1,0 +1,5 @@
+package ejemplo.baseDatos.estadoAnimo.repository;
+
+public interface PosteoRepository {
+
+}

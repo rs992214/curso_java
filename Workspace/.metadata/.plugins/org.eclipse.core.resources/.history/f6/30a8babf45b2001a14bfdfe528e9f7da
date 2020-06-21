@@ -1,0 +1,70 @@
+package com.ejemplor.relaciones.controller;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.ejemplor.relaciones.dto.PersonaDto;
+import com.ejemplor.relaciones.models.Persona;
+import com.ejemplor.relaciones.models.TipoDocumento;
+import com.ejemplor.relaciones.repository.PersonaRepository;
+import com.ejemplor.relaciones.repository.TipoDocumentoRepository;
+
+@RestController
+@RequestMapping("persona")
+public class PersonaController {
+
+	@Autowired
+	private PersonaRepository personaRepository;
+	
+	@Autowired
+	private TipoDocumentoRepository documentoRepository;
+	
+	@GetMapping("/")
+	public ResponseEntity listarTodos(){
+		try{
+			Iterable<Persona> lista;
+			lista = personaRepository.findAll();
+			return ResponseEntity.ok(lista);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e);
+		}
+	}
+	
+	@PostMapping("/")
+	public ResponseEntity guardar(@RequestBody PersonaDto unaPersona){
+		try{
+			Optional<TipoDocumento> documento;
+			Persona persona;
+			TipoDocumento unDocumento;
+			PersonaDto personaGuardada = new PersonaDto();
+			
+			documento = documentoRepository.findById(unaPersona.getTipoDocumentoId());
+			
+			if(!documento.isPresent()){
+				throw new Exception("no encontre el tipo de documento");
+			}
+			
+			unDocumento = documento.get();
+			
+			persona = new Persona(unaPersona.getNombre(),unaPersona.getApellido(),unDocumento,unaPersona.getNumeroDocumento());
+			
+			personaRepository.save(persona);
+			
+			personaGuardada.setApellido(persona.getApellido());
+			personaGuardada.setNombre(persona.getNombre());
+			personaGuardada.setId(persona.getId());
+			personaGuardada.setNumeroDocumento(persona.getNumeroDocumento());
+			personaGuardada.setTipoDocumentoId(persona.getTipoDocumento().getId());
+			
+			return ResponseEntity.ok(personaGuardada);
+		}
+		catch(Exception e){
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e);
+		}
+	}
+}
